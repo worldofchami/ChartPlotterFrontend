@@ -34,14 +34,17 @@ export default async function Page() {
             <span className="text-white text-xl">
                 Enter a footballer's name:
             </span>
-            <form className="w-96 max-md:w-72 h-10 rounded-full glow z-0" id="select_player">
-                <input
-                    type="text"
-                    name="name"
-                    className="h-full w-full rounded-full pl-4 text-white absolute bg-transparent z-10"
-                />
+            <form className="w-fit h-fit flex flex-col gap-y-8" id="select_player">
+                <div className="w-96 max-md:w-72 h-10 rounded-full glow z-0">
+                    <input
+                        type="text"
+                        name="name"
+                        required
+                        className="h-full w-full rounded-full pl-4 text-white absolute bg-transparent z-10"
+                    />
+                </div>
+			    <SubmitButton form="select_player" />
             </form>
-			<SubmitButton form="select_player" />
         </div>
         </>
     );

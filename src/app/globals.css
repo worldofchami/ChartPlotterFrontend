@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --bg-angle {
+	inherits: false;
+	initial-value: 0deg;
+	syntax: '<angle>';
+}
+@keyframes spinbg {
+	to {
+	  --bg-angle: 360deg;
+	}
+  }
+
 @layer base {
 	html {
 		background: #0d0e0e;
@@ -35,21 +46,32 @@
 		box-shadow: 0px 0px 99px 37px rgba(0, 55, 255, 0.19);
 	}
 
+	/* Source: https://www.learnwithjason.dev/blog/animated-css-gradient-border/#create-a-gradient-border-using-background-origin-and-conic-gradient */
 	.glow::before {
 		content: "";
 		position: absolute;
 		inset: 0;
 		color: white;
 		border-radius: 50px;
-		padding: 1.5px;
-		background: linear-gradient(45deg, rgba(0, 54, 255, 1) 0%, rgba(0, 162, 255, 1) 100%);
+
+		background: 
+			linear-gradient(
+    	    to bottom,
+    	    #0036ff,
+    	    #00a2ff
+    	)
+    	padding-box, conic-gradient(
+    	    from var(--bg-angle) in oklch longer hue,
+    	    oklch(68.91% 0.17 245.42) 0 0
+    	) border-box;
+
 		z-index: 0;
 		-webkit-mask:
 			linear-gradient(#fff 0 0) content-box,
 			linear-gradient(#fff 0 0);
-		-webkit-mask-composite: xor;
 		mask-composite: exclude;
-		animation: animateSearchBg 2s ease-in-out infinite forwards;
+		animation: spinbg 2.5s linear infinite;
+		border: 1.5px solid transparent;
 	}
 
 	button:not(:hover) {

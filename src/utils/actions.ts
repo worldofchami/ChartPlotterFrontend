@@ -11,8 +11,19 @@ interface State {
 
 export async function submit(_: State | null, formData: FormData): Promise<State> {
     const name = formData.get("name");
+    
+    if(!name) {
+        return {
+            ok: false,
+            message: "Enter a name!"
+        }
+    }
 
     const res = await fetch(`${SERVER_URL}/chart/${encodeURIComponent((name as string).toLowerCase())}`);
 
-    return await res.json();
+    const data = await res.json();
+    return data || {
+        ok: false,
+        message: "No chart found for this player. Please try again!"
+    };
 }
