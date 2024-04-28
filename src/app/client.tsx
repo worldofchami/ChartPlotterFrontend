@@ -1,6 +1,6 @@
 "use client"
 
-import { HTMLProps, useEffect, useState } from "react";
+import { HTMLProps } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { submit } from "@/utils/actions";
 
@@ -15,7 +15,7 @@ export function SubmitButton({ form, ...props }: { form: string, props?: HTMLPro
                 {...props}
                 form={form}
                 disabled={pending}
-                className="w-40 h-8 rounded-full font-bold mx-auto flex items-center justify-center disabled:opacity-75 disabled:bg-transparent"
+                className="w-40 h-8 rounded-full font-bold mx-auto flex items-center justify-center disabled:cursor-not-allowed disabled:opacity-75 disabled:bg-transparent"
                 type="submit"
                 formAction={formAction}
             >

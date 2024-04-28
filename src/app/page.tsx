@@ -1,18 +1,12 @@
 import { SubmitButton } from "./client";
 
-export interface ResponseData {
-    ok?: boolean;
-    name?: string;
-    fileName?: string;
-}
-
 export default async function Page() {
     return (
         <>
         <div className="w-full h-fit flex flex-col gap-y-8 items-center justify-center">
             <div className="w-16 h-8 flex gap-x-4">
                 <a
-                    href="https://github.com/worldofchami/FootballerChartGenerator"
+                    href="https://github.com/worldofchami/ChartPlotterFrontend"
                     target="_blank"
                 >
                     <div className="flex-grow-1 h-full flex justify-center items-center">
@@ -34,7 +28,7 @@ export default async function Page() {
             <span className="text-white text-xl">
                 Enter a footballer's name:
             </span>
-            <form className="w-fit h-fit flex flex-col gap-y-8" id="select_player">
+            <form className="w-fit h-fit flex flex-col items-center gap-y-8" id="select_player">
                 <div className="w-96 max-md:w-72 h-10 rounded-full glow z-0">
                     <input
                         type="text"
