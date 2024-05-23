@@ -21,9 +21,17 @@ export async function submit(_: State | null, formData: FormData): Promise<State
 
     const res = await fetch(`${SERVER_URL}/chart/${encodeURIComponent((name as string).toLowerCase())}`);
 
-    const data = await res.json();
-    return data || {
-        ok: false,
-        message: "No chart found for this player. Please try again!"
-    };
+    try {
+        const data = await res.json();
+        return data;
+    }
+
+    catch(e) {
+        console.error(e);
+
+        return {
+            ok: false,
+            message: "No chart found for this player. Please try again!"
+        }
+    }
 }
